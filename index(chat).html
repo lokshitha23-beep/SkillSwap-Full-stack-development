@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SkillSwap helps students exchange skills through guided, privacy-conscious learning.">
+  <title>SkillSwap | Learn Together</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <section class="auth-screen" id="authScreen" aria-labelledby="authTitle">
+    <div class="auth-card">
+      <a class="brand auth-brand" href="#" aria-label="SkillSwap"><span class="brand-mark">S</span><span>Skill<span class="brand-accent">Swap</span><small>LEARN · SHARE · GROW</small></span></a>
+      <div class="auth-step-label" id="authStepLabel">WELCOME TO YOUR LEARNING SPACE</div>
+      <h1 id="authTitle">Sign in with your email</h1>
+      <p class="auth-intro" id="authIntro">Use your email to continue. Your email is used for this local demo sign-in and is never displayed on your public profile.</p>
+      <form id="emailLoginForm" class="auth-form">
+        <label>Email address<input type="email" id="loginEmail" required maxlength="120" autocomplete="email" placeholder="you@example.com"></label>
+        <button class="btn btn-primary auth-submit" type="submit">Continue with email <span aria-hidden="true">→</span></button>
+      </form>
+      <form id="firstProfileForm" class="auth-form hidden">
+        <p class="auth-private-email">Email for sign-in: <strong id="privateEmailPreview"></strong><br><span>This is private and will not appear to other students.</span></p>
+        <div class="form-two"><label>Display name *<input id="firstName" required minlength="2" maxlength="24" autocomplete="nickname" placeholder="Name others will see"></label><label>Department<input id="firstDepartment" maxlength="60" placeholder="e.g. CSE – Data Science"></label></div>
+        <div class="form-two"><label>Year of study<select id="firstYear"><option value="">Choose year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select></label><label>Learning interests<input id="firstInterests" maxlength="120" placeholder="Python, design, Power BI"></label></div>
+        <label>About you<textarea id="firstBio" rows="3" maxlength="240" placeholder="What would you like to teach or learn?"></textarea></label>
+        <p class="form-hint">Do not enter phone numbers, personal email addresses, home addresses or social media links in your public details. No mobile number is requested.</p>
+        <button class="btn btn-primary auth-submit" type="submit">Create profile & enter SkillSwap <span aria-hidden="true">→</span></button>
+        <button class="auth-back" id="backToEmail" type="button">← Use a different email</button>
+      </form>
+      <p class="auth-error" id="authError" aria-live="polite"></p>
+      <div class="auth-security">🔒 <span><strong>Privacy first</strong><br>Email and mobile numbers are not shown on profile cards.</span></div>
+      <p class="auth-demo-note">Student project demo: email is not verified and this is not secure production authentication.</p>
+    </div>
+  </section>
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#" data-view="home" aria-label="SkillSwap home">
+      <span class="brand-mark">S</span><span>Skill<span class="brand-accent">Swap</span><small>LEARN · SHARE · GROW</small></span>
+    </a>
+    <button class="mobile-menu" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <button class="nav-link active" data-view="home">Home</button>
+      <button class="nav-link" data-view="explore">Explore skills</button>
+      <button class="nav-link" data-view="dashboard">Dashboard</button>
+      <button class="nav-link" data-view="safety">Safety centre</button>
+    </nav>
+    <div class="header-actions">
+      <span class="demo-pill"><span></span> Signed in</span>
+      <button class="btn btn-secondary btn-small" id="profileButton">My profile</button>
+      <button class="btn btn-primary btn-small" id="logoutButton">Switch account</button>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <section class="view active-view" id="view-home">
+      <section class="hero container">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A safer way to learn from students</div>
+          <h1>Your skills are<br><span>worth sharing.</span></h1>
+          <p class="hero-description">Learn something new from another student. Share what you know. Build confidence together—with privacy and respect at the centre.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-view="explore">Explore skills <span aria-hidden="true">→</span></button>
+            <button class="btn btn-secondary" data-action="add-skill">＋ Share a skill</button>
+          </div>
+          <div class="trust-row">
+            <span><span class="check">✓</span> No public contact details</span>
+            <span><span class="check">✓</span> Request-based learning</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of students learning together">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-card art-card-top"><span class="art-icon purple">⌘</span><span><b>UI Design</b><small>Learn by doing</small></span><span class="tiny-check">✓</span></div>
+          <div class="art-card art-card-bottom"><span class="art-icon orange">{"</>"}</span><span><b>Web Development</b><small>Share your skills</small></span><span class="tiny-check">✓</span></div>
+          <div class="art-center"><div class="people-emoji">👩🏻‍💻<span>🤝</span>👨🏽‍💻</div><div class="art-center-title">Grow together</div><div class="art-center-sub">Student-to-student learning</div></div>
+          <div class="floating-badge badge-one">✦ Learn something new</div><div class="floating-badge badge-two">🔒 Privacy first</div>
+        </div>
+      </section>
+
+      <section class="container section-block">
+        <div class="section-heading"><div><p class="eyebrow">HOW IT WORKS</p><h2>Small steps. Real skills.</h2></div><p>Learn at your own pace, with clear expectations before you connect.</p></div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-number">01</span><div class="step-icon lavender">⌕</div><h3>Find a skill</h3><p>Explore student skills by category, level and learning method.</p></article>
+          <article class="step-card"><span class="step-number">02</span><div class="step-icon peach">✉</div><h3>Send a request</h3><p>Tell the student what you want to learn. They choose whether to accept.</p></article>
+          <article class="step-card"><span class="step-number">03</span><div class="step-icon mint">↗</div><h3>Learn together</h3><p>Use a guided learning plan, practice tasks and respectful communication.</p></article>
+        </div>
+      </section>
+
+      <section class="container section-block featured-section">
+        <div class="section-heading"><div><p class="eyebrow">STUDENT COMMUNITY</p><h2>Skills worth exploring</h2></div><button class="text-button" data-view="explore">View all skills →</button></div>
+        <div class="skills-grid" id="homeSkills"></div>
+      </section>
+      <section class="container safety-banner">
+        <div class="safety-shield">♢</div><div><h3>Your safety is part of the learning experience.</h3><p>Keep personal contact details private, choose your learning method, and report behaviour that makes you uncomfortable.</p></div><button class="btn btn-secondary" data-view="safety">View safety guidelines</button>
+      </section>
+    </section>
+
+    <section class="view container page-view" id="view-explore">
+      <div class="page-title-row"><div><p class="eyebrow">DISCOVER</p><h1>Explore skills</h1><p class="muted">Find a student who can explain a skill in a way that works for you.</p></div><button class="btn btn-primary" data-action="add-skill">＋ Add a skill</button></div>
+      <div class="filter-panel">
+        <label class="search-field"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search Python, design, communication…" autocomplete="off"></label>
+        <label class="select-field"><span class="sr-only">Category</span><select id="categoryFilter"><option value="all">All categories</option><option>Programming</option><option>Design</option><option>Data & Analytics</option><option>Communication</option><option>Productivity</option></select></label>
+        <label class="select-field"><span class="sr-only">Level</span><select id="levelFilter"><option value="all">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+      </div>
+      <div class="results-line"><span id="resultCount">Showing skills</span><span class="privacy-note">🔒 Personal contact details are not shown</span></div>
+      <div class="skills-grid" id="exploreSkills"></div>
+      <div class="empty-state hidden" id="emptySkills"><div>⌕</div><h3>No matching skills</h3><p>Try another keyword or category.</p></div>
+    </section>
+
+    <section class="view container page-view" id="view-dashboard">
+      <div class="page-title-row"><div><p class="eyebrow">YOUR LEARNING SPACE</p><h1>Dashboard</h1><p class="muted">Manage your skills and learning requests in one place.</p></div><button class="btn btn-primary" data-action="add-skill">＋ Share a skill</button></div>
+      <div class="welcome-strip"><div class="avatar avatar-large" id="dashboardAvatar">S</div><div><h2 id="welcomeName">Welcome back!</h2><p>Keep learning. Keep sharing. Keep it respectful.</p></div><span class="demo-tag">LOCAL DEMO</span></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon lavender">✦</span><div><span class="stat-label">Skills shared</span><strong id="statSkills">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon peach">↗</span><div><span class="stat-label">Requests sent</span><strong id="statSent">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon mint">✉</span><div><span class="stat-label">Incoming requests</span><strong id="statIncoming">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon blue">✓</span><div><span class="stat-label">Learning plans</span><strong id="statPlans">0</strong></div></article>
+      </div>
+      <div class="product-tools-grid">
+        <section class="panel">
+          <div class="panel-heading">
+            <div><h2>Recommended for you</h2><p>Suggestions based on the skills you want to learn</p></div>
+            <span class="product-tool-icon">✦</span>
+          </div>
+          <div id="recommendedSkills" class="recommended-skills"></div>
+          <p class="form-hint">Tip: Add learning interests in your profile to improve these suggestions.</p>
+        </section>
+        <section class="panel learning-planner">
+          <div class="panel-heading">
+            <div><h2>My learning plan</h2><p>Turn a goal into small, trackable tasks</p></div>
+            <span class="product-tool-icon">✓</span>
+          </div>
+          <form id="learningTaskForm" class="learning-task-form">
+            <label for="learningTaskInput">What do you want to practise?</label>
+            <input id="learningTaskInput" required maxlength="100" placeholder="e.g. Build a responsive profile card">
+            <div class="form-two">
+              <label for="learningTaskDue">Target date<input id="learningTaskDue" type="date"></label>
+              <label for="learningTaskPriority">Priority<select id="learningTaskPriority"><option>Normal</option><option>High</option><option>Low</option></select></label>
+            </div>
+            <button class="btn btn-primary" type="submit">＋ Add learning task</button>
+          </form>
+          <div class="learning-progress"><div class="learning-progress-label"><span id="learningProgressText">0 of 0 tasks complete</span><strong id="learningProgressPercent">0%</strong></div><div class="progress-track"><span id="learningProgressBar"></span></div></div>
+          <div id="learningTasksList" class="learning-tasks-list"></div>
+        </section>
+      </div>
+      <div class="dashboard-layout">
+        <section class="panel"><div class="panel-heading"><div><h2>My skills</h2><p>Skills you offer to teach</p></div><button class="text-button" data-action="add-skill">＋ Add</button></div><div id="mySkillsList" class="compact-list"></div></section>
+        <section class="panel"><div class="panel-heading"><div><h2>Incoming requests</h2><p>Choose whether to accept a learning request</p></div></div><div id="incomingRequests" class="compact-list"></div></section>
+        <section class="panel"><div class="panel-heading"><div><h2>Requests I sent</h2><p>Track your learning requests</p></div></div><div id="sentRequests" class="compact-list"></div></section>
+        <section class="panel"><div class="panel-heading"><div><h2>Saved skills</h2><p>Skills you want to revisit</p></div></div><div id="savedSkillsList" class="compact-list"></div></section>
+      </div>
+      <section class="panel chat-panel" id="learningChatPanel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">AFTER ACCEPTANCE</p><h2>Learning chats</h2><p>Chat is available only when a learning request has been accepted.</p></div>
+          <span class="product-tool-icon">☏</span>
+        </div>
+        <div class="chat-layout">
+          <div class="chat-conversation-list" id="chatConversationList">
+            <p class="empty-mini">Accepted learning requests will appear here.</p>
+          </div>
+          <div class="chat-main" id="chatMain">
+            <div class="chat-empty-state"><span>☏</span><strong>Choose a learning chat</strong><p>Accept or send a request and wait for it to be accepted before messaging.</p></div>
+          </div>
+        </div>
+        <p class="form-hint chat-safety-note">Safety: keep messages about learning. Never share passwords, private contact details, financial information or your live location. This is a local browser demo, not a secure private messaging service.</p>
+      </section>
+      <section class="panel profile-editor" id="profileEditorPanel">
+        <div class="panel-heading"><div><h2>Edit my profile</h2><p>Update the details students see in this demo.</p></div><span class="profile-edit-icon">✎</span></div>
+        <form id="profileForm" class="profile-form">
+          <div class="form-two"><label>Display name<input id="profileName" required minlength="2" maxlength="24" autocomplete="nickname" placeholder="e.g. Student"></label><label>Department<input id="profileDepartment" maxlength="60" placeholder="e.g. CSE – Data Science"></label></div>
+          <div class="form-two"><label>Year of study<select id="profileYear"><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select></label><label>Learning interests<input id="profileInterests" maxlength="120" placeholder="e.g. Python, UI design, Power BI"></label></div>
+          <label>Short bio<textarea id="profileBio" rows="3" maxlength="240" placeholder="What do you enjoy learning or teaching?"></textarea></label>
+          <p class="form-hint">Your sign-in email is private and is never shown here or on skill cards. Do not add phone numbers, personal email addresses, home addresses or social media links to public details.</p>
+          <div class="profile-form-actions"><button class="btn btn-secondary" type="button" id="resetProfileForm">Reset form</button><button class="btn btn-primary" type="submit">Save profile changes</button></div>
+          <p class="form-feedback" id="profileFeedback" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="panel privacy-panel"><div class="privacy-panel-icon">🔐</div><div class="privacy-panel-copy"><h2>Privacy preferences</h2><p>Your sign-in email is private. SkillSwap does not ask for a mobile number, and contact details are not displayed on public profiles.</p></div><label class="toggle-label"><input type="checkbox" id="profileVisible" checked><span class="toggle"></span><span>Show my demo profile in listings</span></label></section>
+    </section>
+
+    <section class="view container page-view" id="view-safety">
+      <div class="page-title-row"><div><p class="eyebrow">RESPECT IS REQUIRED</p><h1>Safety centre</h1><p class="muted">Simple rules to keep student-to-student learning respectful.</p></div></div>
+      <div class="safety-hero"><div class="safety-hero-symbol">🔐</div><div><h2>Learn with confidence, not pressure.</h2><p>You can decline a request, stop an interaction, block a demo profile or submit a report at any time.</p></div></div>
+      <div class="safety-grid">
+        <article class="panel safety-rule"><span class="rule-icon lavender">◉</span><h3>Protect your privacy</h3><p>Use a display name. Do not publish phone numbers, personal email addresses, home addresses, passwords or live location.</p></article>
+        <article class="panel safety-rule"><span class="rule-icon peach">✋</span><h3>Respect boundaries</h3><p>Learning requests are optional. No one should pressure you to accept, share personal details or meet in person.</p></article>
+        <article class="panel safety-rule"><span class="rule-icon mint">⚑</span><h3>Report concerning behaviour</h3><p>Report harassment, impersonation, spam, inappropriate content or misleading skill claims. Reports should be reviewed by a moderator in a real deployment.</p></article>
+        <article class="panel safety-rule"><span class="rule-icon blue">⊘</span><h3>Block unwanted contact</h3><p>Blocking a profile hides it in this local demo. A production platform must enforce blocks on the server too.</p></article>
+      </div>
+      <div class="panel report-panel"><div><p class="eyebrow">SAFETY TOOL</p><h2>Report a profile or skill</h2><p class="muted">This prototype saves reports only in this browser. It does not send them to a real support team.</p></div><form id="reportForm" class="report-form"><label>Profile or skill name<input id="reportTarget" required maxlength="80" placeholder="Enter the displayed name"></label><label>Reason<select id="reportReason" required><option value="">Choose a reason</option><option>Harassment or inappropriate behaviour</option><option>Fake profile or impersonation</option><option>Misleading skill information</option><option>Spam or suspicious links</option><option>Privacy concern</option><option>Other concern</option></select></label><label>Details (optional)<textarea id="reportDetails" rows="3" maxlength="400" placeholder="Describe the concern without including sensitive personal information."></textarea></label><button class="btn btn-primary" type="submit">Submit demo report</button><p id="reportFeedback" class="form-feedback" aria-live="polite"></p></form></div>
+      <div class="notice-box"><strong>Before real public launch:</strong> this HTML/CSS/JavaScript prototype is not a secure multi-user service. Real users need backend-enforced access control, verified authentication, private data storage, a moderator workflow, clear policies and security testing.</div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="#" data-view="home"><span class="brand-mark">S</span><span>Skill<span class="brand-accent">Swap</span><small>LEARN · SHARE · GROW</small></span></a><p>Made for students who want to learn from each other.</p><span>© 2026 SkillSwap · Student project prototype</span></div></footer>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><p class="eyebrow" id="modalEyebrow">SKILLSHARE</p><h2 id="modalTitle">Share a skill</h2></div><button class="icon-button" id="closeModal" aria-label="Close dialog">×</button></div>
+      <form id="skillForm">
+        <label>Skill name<input id="skillName" required maxlength="60" placeholder="e.g. HTML & CSS basics"></label>
+        <div class="form-two"><label>Category<select id="skillCategory" required><option>Programming</option><option>Design</option><option>Data & Analytics</option><option>Communication</option><option>Productivity</option></select></label><label>Level<select id="skillLevel" required><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label></div>
+        <label>What can you explain?<textarea id="skillTopics" required maxlength="220" rows="3" placeholder="List topics you can teach and what a learner will practise."></textarea></label>
+        <div class="form-two"><label>Teaching method<select id="skillMethod"><option>Text explanation</option><option>Notes and resources</option><option>Practice tasks</option><option>Online session (arranged safely)</option></select></label><label>Estimated duration<select id="skillDuration"><option>30 minutes</option><option>1–2 hours</option><option>Several sessions</option></select></label></div>
+        <label>Prerequisites (optional)<input id="skillPrereq" maxlength="100" placeholder="e.g. No prior experience needed"></label>
+        <p class="form-hint">Do not add personal phone numbers, private email addresses or meeting addresses to skill details.</p>
+        <div class="modal-actions"><button type="button" class="btn btn-secondary" id="cancelModal">Cancel</button><button type="submit" class="btn btn-primary">Save skill</button></div>
+      </form>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
